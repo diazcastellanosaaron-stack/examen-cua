@@ -1,6 +1,6 @@
 /* Examen CUA · Agencia DNP — service worker
    Guarda la app completa en el dispositivo para que abra sin internet. */
-const CACHE = 'examen-cua-vdc2ca92a';
+const CACHE = 'examen-cua-v1ea67a5c';
 const ASSETS = [
   './',
   './index.html',
@@ -25,18 +25,39 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
-  e.respondWith(
-    caches.match(e.request, { ignoreSearch: true }).then(hit => {
-      if (hit) return hit;
-      return fetch(e.request)
+  const url = new URL(e.request.url);
+  const esDocumento = e.request.mode === 'navigate' ||
+                      e.request.destination === 'document' ||
+                      url.pathname.endsWith('/') ||
+                      url.pathname.endsWith('index.html');
+
+  // La página: primero internet (para recibir actualizaciones), y si no hay, la copia guardada.
+  if (esDocumento) {
+    e.respondWith(
+      fetch(e.request)
         .then(res => {
-          if (res && res.ok && res.type === 'basic') {
-            const copy = res.clone();
-            caches.open(CACHE).then(c => c.put(e.request, copy));
+          if (res && res.ok) {
+            const copia = res.clone();
+            caches.open(CACHE).then(c => c.put('./index.html', copia));
           }
           return res;
         })
-        .catch(() => caches.match('./index.html'));
+        .catch(() => caches.match('./index.html', { ignoreSearch: true }))
+    );
+    return;
+  }
+
+  // Todo lo demás (íconos, manifiesto): primero la copia guardada.
+  e.respondWith(
+    caches.match(e.request, { ignoreSearch: true }).then(hit => {
+      if (hit) return hit;
+      return fetch(e.request).then(res => {
+        if (res && res.ok && res.type === 'basic') {
+          const copia = res.clone();
+          caches.open(CACHE).then(c => c.put(e.request, copia));
+        }
+        return res;
+      });
     })
   );
 });
