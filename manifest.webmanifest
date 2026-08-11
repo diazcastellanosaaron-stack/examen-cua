@@ -1,7 +1,7 @@
 {
-  "name": "Examen CUA · Agencia DNP",
-  "short_name": "Examen CUA",
-  "description": "Guía de estudio, práctica y simulacros calificados para el examen CUA de agente de seguros. Funciona sin internet.",
+  "name": "Examen CUA A · Agencia DNP",
+  "short_name": "Examen CUA A",
+  "description": "Guía de estudio, práctica y simulacros calificados para el examen CUA cédula A. Agencia DNP. Funciona sin internet.",
   "lang": "es-MX",
   "start_url": "./index.html",
   "scope": "./",
@@ -9,10 +9,27 @@
   "orientation": "portrait",
   "background_color": "#f1f2f8",
   "theme_color": "#2b2d6e",
-  "categories": ["education"],
+  "categories": [
+    "education"
+  ],
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
