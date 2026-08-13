@@ -1,6 +1,6 @@
 /* Examen CUA · Agencia DNP — service worker
    Guarda la app completa en el dispositivo para que abra sin internet. */
-const CACHE = 'examen-cua-v59dcb20f';
+const CACHE = 'examen-cua-vacbe91f5';
 const ASSETS = [
   './',
   './index.html',

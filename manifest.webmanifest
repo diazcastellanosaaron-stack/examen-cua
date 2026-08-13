@@ -1,7 +1,7 @@
 {
-  "name": "Examen CUA A · Agencia DNP",
-  "short_name": "Examen CUA A",
-  "description": "Guía de estudio, práctica y simulacros calificados para el examen CUA cédula A. Agencia DNP. Funciona sin internet.",
+  "name": "Examen CUA · Agencia DNP",
+  "short_name": "Examen CUA",
+  "description": "Guía de estudio, práctica y simulacros calificados para el examen CUA, cédulas A y B. Agencia DNP. Funciona sin internet.",
   "lang": "es-MX",
   "start_url": "./index.html",
   "scope": "./",
